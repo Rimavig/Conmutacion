@@ -1,6 +1,6 @@
 # Conmutacion
 Proyecto
-MANUAL DE USUARIO PARA LA APLICACIÓN
+
 
 Nuestra aplicación es para la configuración de una red Mpls del proveedor Telconet en la ciudad de Quito y Guayaquil
 
