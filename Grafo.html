@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+                    <title>Grafo de Relacion</title>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.13.0/vis.min.js"></script>
+<meta charset="utf-8">  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>        <link href="vis/vis.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript">
+        function draw() {
+            // create some nodes
+var nodes = [{id: 2, shape: 'image',  image: 'image/PE-GYE.png', label:"PE-GYE"},
+{id: 5, shape: 'image',  image: 'image/CE-GYE-HONESA.png', label:"CE-GYE-HONESA"},
+{id: 4, shape: 'image',  image: 'image/SW-GYE.png', label:"SW-GYE"},
+{id: 7, shape: 'image',  image: 'image/CE-UIO-HONESA.png', label:"CE-UIO-HONESA"},
+{id: 1, shape: 'image',  image: 'image/PE-UIO.png', label:"PE-UIO"},
+{id: 6, shape: 'image',  image: 'image/CE-UIO-NESTLE.png', label:"CE-UIO-NESTLE"},
+{id: 0, shape: 'image',  image: 'image/P-TELCO.png', label:"P-TELCO"},
+{id: 3, shape: 'image',  image: 'image/SW-UIO.png', label:"SW-UIO"}];
+var edges = [
+{"from": 2, "to": 4},
+{"from": 4, "to": 5},
+{"from": 1, "to": 3},
+{"from": 0, "to": 1},
+{"from": 0, "to": 2},
+{"from": 3, "to": 6},
+{"from": 3, "to": 7}];
+            // create a network
+            var container = document.getElementById('grafo');
+            var data = {
+                nodes: nodes,
+                edges: edges
+            };
+            var options = {
+                nodes: {
+                    shape: 'dot',
+                    size: 80
+                },
+                physics: {
+                    forceAtlas2Based: {
+                        gravitationalConstant: -100,
+                        centralGravity: 0.0001,
+                        springLength:250,
+                        springConstant: 0.18
+                    },
+                    maxVelocity: 146,
+                    solver: 'forceAtlas2Based',
+                    timestep: 0.35,
+                    stabilization: {iterations: 150}
+                },edges: {arrows:{to:{enable:true}}}
+            };
+            var network = new vis.Network(container, data, options);
+
+        }
+    </script>
+    <script src="../../googleAnalytics.js"></script>    </head>
+    <body onload="draw()" background="wall.png"><div class="page-header">
+  <h1>Grafo de la red Mpls de la ciudad Guayaquil y Quito</h1>
+</div>            <div id="grafo" style="position: absolute; top: 60px; bottom: 20px; width: 100%;"></div>
+    </body>
+</html>
